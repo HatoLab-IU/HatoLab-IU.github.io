@@ -206,6 +206,67 @@
             color: var(--teal);
         }
 
+        .resource-section {
+            margin-top: 30px;
+            padding: 26px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .resource-section + .resource-section {
+            margin-top: 20px;
+        }
+
+        .resource-section h3 {
+            margin: 0 0 6px;
+            color: var(--navy);
+            font-family: "Source Serif 4", Georgia, serif;
+            font-size: 1.6rem;
+            line-height: 1.25;
+        }
+
+        .resource-intro {
+            margin-bottom: 18px;
+            color: var(--muted);
+        }
+
+        .resource-list {
+            display: grid;
+            gap: 14px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .resource-item {
+            padding: 16px 18px;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .resource-title {
+            margin-bottom: 4px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .resource-meta {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--muted);
+        }
+
+        .resource-link {
+            font-weight: 600;
+        }
+
+        .resource-link::after {
+            content: "  ↗";
+            font-size: 0.9em;
+        }
+
         .team-section > ul {
             margin: 0;
             padding-left: 1.3rem;
@@ -268,6 +329,9 @@
         }
 
         @media (max-width: 800px) {
+            .resource-section {
+                padding: 22px;
+            }
             body { font-size: 16px; }
             main { padding-top: 40px; }
             section { padding: 28px 24px; }
@@ -304,6 +368,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html" aria-current="page">About</a></li>
             <li><a href="data.html">Data</a></li>
+            <li><a href="links.html">Links</a></li>
             <li><a href="images.html">Images</a></li>
         </ul>
     </nav>
@@ -351,14 +416,6 @@
             </div>
         </section>
 
-        <section id="links">
-            <div class="section-label"> </div>
-            <h2>Links</h2>
-            <div class="links-grid">
-                <a class="link-card" href="https://orcid.org/0000-0002-0446-6575" target="_blank" rel="noopener noreferrer">ORCID</a>
-            </div>
-        </section>
-
         <section id="team" class="team-section">
             <div class="section-label">People</div>
             <h2>Research Team</h2>
@@ -402,7 +459,7 @@
                     <li>Kevin Ni, MD, PhD (Endocrinologist at University of Colorado)</li>
 					<li>Zain Siddiqui, DO (Marian University)</li>
 					<li>Franziska Blender (University of Potsdam)</li>
-				<ul>
+				</ul>
             </div>
 			
         </section>
