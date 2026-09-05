@@ -1,45 +1,249 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Hato Lab</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/navbar_styles.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hato Lab at Indiana University School of Medicine. Research in kidney biology, sepsis, organ injury and recovery, and host-microbe interactions.">
+    <title>Hato Lab | Indiana University</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #17324d;
+            --navy-dark: #102437;
+            --teal: #236a72;
+            --teal-light: #eaf5f5;
+            --gold: #c59a45;
+            --ink: #24333f;
+            --paper: #ffffff;
+            --border: rgba(255,255,255,0.28);
+            --max-width: 1240px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--paper);
+            background: var(--navy-dark);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        a { color: inherit; }
+
+        nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 20;
+            background: rgba(16, 36, 55, 0.86);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        nav ul {
+            width: min(var(--max-width), calc(100% - 40px));
+            min-height: 70px;
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            list-style: none;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            background: rgba(234,245,245,0.16);
+            color: #fff;
+            outline: none;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .hero video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -3;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(16,36,55,0.62) 0%, rgba(16,36,55,0.48) 44%, rgba(16,36,55,0.76) 100%);
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 15%, rgba(16,36,55,0.2) 70%, rgba(16,36,55,0.42) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            width: min(var(--max-width), calc(100% - 40px));
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: #f2d38b;
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Source Serif 4", Georgia, serif;
+            font-size: clamp(3.4rem, 9vw, 7.5rem);
+            font-weight: 600;
+            line-height: 0.98;
+            letter-spacing: -0.035em;
+            text-shadow: 0 6px 24px rgba(0,0,0,0.28);
+        }
+
+        .subtitle {
+            max-width: 760px;
+            margin: 24px auto 0;
+            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            line-height: 1.6;
+            color: rgba(255,255,255,0.94);
+        }
+
+        .hero-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .hero-links a {
+            padding: 12px 18px;
+            color: var(--navy-dark);
+            background: #fff;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        }
+
+        .hero-links a.secondary {
+            color: #fff;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.45);
+            box-shadow: none;
+        }
+
+        .hero-links a:hover,
+        .hero-links a:focus-visible {
+            transform: translateY(-1px);
+            outline: 3px solid rgba(242,211,139,0.45);
+            outline-offset: 2px;
+        }
+
+        .credits {
+            position: absolute;
+            right: 20px;
+            bottom: 16px;
+            z-index: 2;
+            margin: 0;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.78);
+        }
+
+        .credits p { margin: 0; }
+
+        @media (max-width: 700px) {
+            nav ul {
+                width: calc(100% - 20px);
+                min-height: 62px;
+                justify-content: center;
+                gap: 2px;
+            }
+
+            nav a {
+                padding: 9px 10px;
+                font-size: 0.9rem;
+            }
+
+            .hero-content {
+                width: calc(100% - 28px);
+                padding-top: 100px;
+            }
+
+            .subtitle { font-size: 1rem; }
+            .credits { right: 12px; bottom: 10px; font-size: 0.7rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .hero video { display: none; }
+            .hero { background: linear-gradient(135deg, #17324d, #236a72); }
+        }
+    </style>
 </head>
 <body>
-  <!-- navigation bar -->
-  <nav>
-    <ul>
-      <a href="index.html">
-        <li>Home</li>
-      </a>
-      <a href="about.html">
-        <li>About</li>
-      </a>
-      <a href="data.html">
-        <li>Data</li>
-      </a>
-      <a href="images.html">
-        <li>Images</li>
-      </a>
-    </ul>
-  </nav>
-  <!-- video background container-->
-  <div class="video-container">
-    <!-- transparent gray overlay-->
-    <div class="overlay"></div>
-    <video  autoplay="autoplay" muted="muted" loop="loop">
-        <source src="./videos/header_video.mp4" type="video/mp4">
-    </video>
-    <header>
-        <h1>Hato Lab</h1>
-        <p>Indiana University Indianapolis</p>
-    </header>
-  </div>
-    <div class="credits">
-      <p>Website designed by Annabelle White.</p>
-    </div>
+    <nav aria-label="Primary navigation">
+        <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="data.html">Data</a></li>
+            <li><a href="links.html">Links</a></li>
+            <li><a href="images.html">Images</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero" aria-label="Hato Lab">
+            <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="./videos/header_video.mp4" type="video/mp4">
+            </video>
+
+            <div class="hero-content">
+                <span class="eyebrow">Indiana University School of Medicine</span>
+                <h1>Hato Lab</h1>
+                <p class="subtitle">Indianapolis</p>
+                <div class="hero-links" aria-label="Quick links">
+                    <a href="about.html">About the Lab</a>
+                    <a class="secondary" href="data.html">Research Resources</a>
+                </div>
+            </div>
+
+            <div class="credits">
+                <p>Website designed by Annabelle White</p>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
-
