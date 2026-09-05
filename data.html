@@ -3,94 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hato Lab Data</title>
-    <link rel="stylesheet" href="./css/data_styles.css">
-    <link rel="stylesheet" href="./css/navbar_styles.css">
+    <meta name="description" content="Hato Lab research data, protocols, and interactive data applications at Indiana University School of Medicine.">
+    <title>Data &amp; Tools | Hato Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy:#17324d; --teal:#236a72; --teal-light:#eaf5f5; --gold:#c59a45; --ink:#24333f; --muted:#5e6d78; --paper:#fff; --surface:#f5f8fa; --border:#dbe4ea; --shadow:0 16px 40px rgba(16,36,55,.08); --radius:18px; --max-width:1240px; }
+        * { box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { margin:0; color:var(--ink); background:linear-gradient(180deg,#f8fbfc 0%,#fff 32%); font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:17px; line-height:1.7; }
+        a { color:var(--teal); text-decoration-thickness:1.5px; text-underline-offset:3px; }
+        a:hover,a:focus-visible { color:var(--navy); }
+        nav { position:sticky; top:0; z-index:20; background:rgba(255,255,255,.96); border-bottom:1px solid var(--border); backdrop-filter:blur(10px); }
+        nav ul { width:min(var(--max-width),calc(100% - 40px)); margin:0 auto; padding:0; min-height:68px; display:flex; align-items:center; justify-content:flex-end; gap:8px; list-style:none; }
+        nav a { display:inline-block; padding:10px 14px; color:var(--navy); font-weight:600; text-decoration:none; border-radius:10px; }
+        nav a:hover,nav a:focus-visible { background:var(--teal-light); color:var(--teal); }
+        main { width:min(var(--max-width),calc(100% - 40px)); margin:0 auto; padding:64px 0 96px; }
+        .hero { max-width:900px; margin-bottom:48px; }
+        .eyebrow,.section-label { color:var(--teal); font-size:.82rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+        .eyebrow { display:inline-block; margin-bottom:12px; }
+        h1,h2,h3 { margin-top:0; font-family:"Source Serif 4",Georgia,serif; color:var(--navy); line-height:1.18; letter-spacing:-.02em; }
+        h1 { margin-bottom:16px; font-size:clamp(2.5rem,5vw,4.25rem); }
+        h2 { margin-bottom:10px; font-size:clamp(1.75rem,3vw,2.4rem); }
+        h3 { margin-bottom:10px; font-size:1.45rem; }
+        p { margin:0 0 20px; }
+        section { margin-top:40px; padding:36px 40px; background:var(--paper); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); scroll-margin-top:88px; }
+        .section-label { margin-bottom:8px; color:var(--gold); letter-spacing:.1em; }
+        .section-intro { max-width:800px; color:var(--muted); margin-bottom:26px; }
+        .resource-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+        .resource-card { display:flex; flex-direction:column; padding:22px; background:var(--surface); border:1px solid var(--border); border-radius:14px; min-height:150px; }
+        .resource-card:hover { border-color:#c4dfe0; }
+        .resource-title { color:var(--navy); font-size:1.03rem; font-weight:700; margin-bottom:6px; }
+        .resource-meta { color:var(--muted); margin-bottom:14px; }
+        .resource-link { margin-top:auto; font-weight:700; }
+        .tool-note { display:inline-block; margin-top:8px; padding:4px 9px; border-radius:999px; background:#eaf5f5; color:var(--teal); font-size:.78rem; font-weight:700; }
+        .restricted { background:linear-gradient(145deg,#fbf8f1,#fff); border-left:5px solid var(--gold); }
+        .restricted .resource-link { color:var(--navy); }
+        .app-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; margin:0; padding:0; list-style:none; }
+        .app-list li { margin:0; }
+        .app-list a { display:block; height:100%; min-height:84px; padding:22px 24px; background:var(--surface); border:1px solid var(--border); border-radius:14px; text-decoration:none; font-weight:600; line-height:1.5; }
+        .pmid { color:var(--muted); font-size:.86rem; font-weight:500; white-space:nowrap; }
+        .app-list a:hover,.app-list a:focus-visible { background:var(--teal-light); border-color:#c4dfe0; }
+        .collaboration { margin-top:48px; padding-top:36px; border-top:1px solid var(--border); }
+        .collaboration h3 { margin-bottom:20px; }
+        .lab-notes { margin-top:56px; }
+        @media (max-width:800px) { body{font-size:16px;} main{padding-top:40px;} section{padding:28px 24px;} nav ul{justify-content:center;flex-wrap:wrap;} .resource-grid,.app-list{grid-template-columns:1fr;} }
+        @media (max-width:520px) { nav ul{width:calc(100% - 20px);gap:2px;} nav a{padding:9px 10px;font-size:.92rem;} main{width:calc(100% - 24px);padding-bottom:64px;} section{padding:24px 18px;border-radius:14px;} }
+        @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto;} }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-          <a href="index.html">
-            <li>Home</li>
-          </a>
-          <a href="about.html">
-            <li>About</li>
-          </a>
-          <a href="data.html">
-            <li>Data</li>
-          </a>
-          <a href="images.html">
-            <li>Images</li>
-          </a>
-        </ul>
-      </nav>
-    <main>
-        <!-- Hato Lab Notes Section -->
-        <h1>Lab Notes</h1>
-        <ul id="labNotes">
-          <li><a href="https://docs.google.com/document/d/1aBVnSMFC8ZFI4STuHvTEwXi6cjPYAXJOcDKFx4AnRl8/edit?usp=drive_link">Lab Notes</a></li>
-        </ul>
-        <!-- Hato Lab Script Lists Section -->
-        <h1>Scripts</h1>
-        <ul id="labScripts">
-          <li><a href="jeredscripts.html">Jered Scripts</a></li>
-          <li><a href="hatoscripts.html">Hato Scripts</a></li>
-        </ul>
-        <!-- Hato Lab Protocols Section -->
-        <h1>Protocols</h1>
-        <ul id="protocolLinks">
-          <li><a href="protocols.html" id="protocolsLink">Protocols (Internal)</a></li>
-          <li><a href="public_protocols.html" id="protocolsPublicLink">Protocols (Public)</a></li>
-        </ul>
-        <script src="protocols.js"></script>
-        <!-- <h1>Protocols</h1> -->
-        <!-- <a href="protocols.html" id="protocolsLink">Protocols</a> -->
-        <!-- <script src="protocols.js"></script> -->
-        <!-- Hato Lab Apps Section -->
-        <h1>Hato Lab Apps</h1>
-        <!-- <ul id="appList"></ul> -->
-        <!-- <script src="script.js"></script> -->
-        <h3>Apps</h3>
-          <ul id="appList">
-            
-            <li><a href="https://connect.posit.iu.edu/328/">Kidney LPS scRNAseq (PMID:33448928)</a></li>
-            <li><a href="https://connect.rstudio.iu.edu/content/19/">Kidney LPS Ligand-Receptor (PMID:33448928)</a></li>  
-            <li><a href="https://connect.posit.iu.edu/417">LPS Preconditioning scRNAseq</a></li>
-            <li><a href="https://connect.posit.iu.edu/content/26047561-1f73-4c6b-9cd4-2e0a42c0396f">dbdb Bulk mRNAseq</a></li>
-            <li><a href="https://connect.posit.iu.edu/content/ac17d8e0-70f4-4df7-8d2f-d2128e72bca8/">LPS Time Course (PMID:38954486)</a></li>
-            <li><a href="http://db.hamadalab.com/hatolab">Kidney Nanopore Long-Read (PMID:38954486)</a></li>
-            <li><a href="https://connect.posit.iu.edu/view_GY/">Kidney Double-Stranded RNAseq (PMID:38954486)</a></li>
-            <li><a href="https://connect.posit.iu.edu/azin1/">AZIN1 Cell Line RNAseq</a></li>
-            <li><a href="https://connect.posit.iu.edu/azin1_mouse_kidney/">Azin1 IRI (0 and 24 h)</a></li>
-            <li><a href="https://connect.posit.iu.edu/IRI_timecourse_Azin1/">Azin1 IRI (48 and 72 h)</a></li>
-            <li><a href="https://connect.posit.iu.edu/IRI_timecourse_WT">Kidney IRI Time Course (PMID:38954486)</a></li>
-            <li><a href="https://connect.posit.iu.edu/bulk_kidney_bx/">Human Kidney RNAseq (PMID:38954486)</a></li>
-            <li><a href="https://connect.posit.iu.edu/473/">Kidney MRSA Infection Multiome</a></li>
-            <li><a href="https://connect.posit.iu.edu/580/">Plotting App 1</a></li>
-            <li><a href="https://connect.posit.iu.edu/690/">Plotting App 2 (clarioSTAR)</a></li>
-            <li><a href="https://connect.posit.iu.edu/PISA/">MRSA Proteome Integral Solubility Alteration</a></li>
-            <li><a href="https://connect.posit.iu.edu/mrsa4/">MRSA Kidney Dual-Species RNA-seq</a></li>
-          </ul>
+<nav aria-label="Primary navigation"><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="data.html" aria-current="page">Data</a></li>
+    <li><a href="links.html">Links</a></li>
+    <li><a href="images.html">Images</a></li>
+</ul></nav>
+<main>
+<header class="hero">
+    <span class="eyebrow">Hato Laboratory · Indiana University</span>
+    <h1>Data &amp; Research Tools</h1>
+    <p class="section-intro">Interactive applications, protocols, and other tools developed by the Hato Lab to explore our research datasets. Selected public datasets are available through the <a href="links.html">Links</a> page.</p>
+</header>
 
-          <h3>Apps (collaboration)</h3>
-          <ul id="appList">
-            <li><a href="https://connect.rstudio.iu.edu/content/70/">Human Heart (Lim Lab; PMID:35179046)</a></li>
-            <li><a href="https://connect.posit.iu.edu/112/">Mouse Kidney/FGF23 (Ken White Lab; PMID:39828039)</a></li>
+<section id="protocols">
+    <div class="section-label">Methods</div>
+    <h2>Protocols</h2>
+    <p class="section-intro">Laboratory protocols are provided separately for internal and public access.</p>
+    <div class="resource-grid">
+        <div class="resource-card">
+            <div class="resource-title">Protocols (Internal)</div>
+            <div class="resource-meta">Access requires an authorized university account.</div>
+            <a class="resource-link" href="protocols.html" id="protocolsLink">Open internal protocols</a>
+        </div>
+        <div class="resource-card">
+            <div class="resource-title">Protocols (Public)</div>
+            <div class="resource-meta">Protocols available for public access.</div>
+            <a class="resource-link" href="public_protocols.html" id="protocolsPublicLink">Open public protocols</a>
+        </div>
+    </div>
+    <script src="protocols.js"></script>
+</section>
+
+
+<section id="apps">
+    <div class="section-label">Explore</div>
+    <h2>Hato Lab Apps</h2>
+    <p class="section-intro">Interactive applications for exploring and visualizing Hato Lab datasets.</p>
+    <ul class="app-list">
+        <li><a href="https://connect.posit.iu.edu/328/">Kidney LPS scRNA-seq <span class="pmid">(PMID:33448928)</span></a></li>
+        <li><a href="https://connect.rstudio.iu.edu/content/19/">Kidney LPS Ligand-Receptor <span class="pmid">(PMID:33448928)</span></a></li>
+        <li><a href="https://connect.posit.iu.edu/417">LPS Preconditioning scRNA-seq</a></li>
+        <li><a href="https://connect.posit.iu.edu/content/26047561-1f73-4c6b-9cd4-2e0a42c0396f">dbdb Bulk mRNA-seq</a></li>
+        <li><a href="https://connect.posit.iu.edu/content/ac17d8e0-70f4-4df7-8d2f-d2128e72bca8/">LPS Time Course <span class="pmid">(PMID:38954486)</span></a></li>
+        <li><a href="http://db.hamadalab.com/hatolab">Kidney Nanopore Long-Read <span class="pmid">(PMID:38954486)</span></a></li>
+        <li><a href="https://connect.posit.iu.edu/view_GY/">Kidney Double-Stranded RNA-seq <span class="pmid">(PMID:38954486)</span></a></li>
+        <li><a href="https://connect.posit.iu.edu/azin1/">AZIN1 Cell Line RNA-seq</a></li>
+        <li><a href="https://connect.posit.iu.edu/azin1_mouse_kidney/">Azin1 IRI (0 and 24 h)</a></li>
+        <li><a href="https://connect.posit.iu.edu/IRI_timecourse_Azin1/">Azin1 IRI (48 and 72 h)</a></li>
+        <li><a href="https://connect.posit.iu.edu/IRI_timecourse_WT">Kidney IRI Time Course <span class="pmid">(PMID:38954486)</span></a></li>
+        <li><a href="https://connect.posit.iu.edu/bulk_kidney_bx/">Human Kidney RNA-seq <span class="pmid">(PMID:38954486)</span></a></li>
+        <li><a href="https://connect.posit.iu.edu/473/">Kidney MRSA Infection Multiome</a></li>
+        <li><a href="https://connect.posit.iu.edu/580/">Plotting App 1</a></li>
+        <li><a href="https://connect.posit.iu.edu/690/">Plotting App 2 (clarioSTAR)</a></li>
+        <li><a href="https://connect.posit.iu.edu/PISA/">MRSA Proteome Integral Solubility Alteration</a></li>
+        <li><a href="https://connect.posit.iu.edu/mrsa4/">MRSA Kidney Dual-Species RNA-seq</a></li>
+    </ul>
+
+    <div class="collaboration">
+        <h3>Collaborative Apps</h3>
+        <ul class="app-list">
+            <li><a href="https://connect.rstudio.iu.edu/content/70/">Human Heart (Lim Lab; <span class="pmid">PMID:35179046</span>)</a></li>
+            <li><a href="https://connect.posit.iu.edu/112/">Mouse Kidney/FGF23 (Ken White Lab; <span class="pmid">PMID:39828039</span>)</a></li>
             <li><a href="https://connect.posit.iu.edu/iron_kidney/">Mouse Kidney/Iron (Agoro Lab)</a></li>
             <li><a href="https://connect.rstudio.iu.edu/184/">iPS (Banno Lab)</a></li>
             <li><a href="https://connect.rstudio.iu.edu/298/">Liver (Banno Lab)</a></li>
-            <li><a href="https://connect.rstudio.iu.edu/content/765a23bb-c26e-480a-882e-8b81d905ecea">RNAseq (Ai Lab)</a></li>
+            <li><a href="https://connect.rstudio.iu.edu/content/765a23bb-c26e-480a-882e-8b81d905ecea">RNA-seq (Ai Lab)</a></li>
             <li><a href="https://connect.rstudio.iu.edu/sws/">SWS (Banno Lab)</a></li>
-          </ul>
-        
+        </ul>
+    </div>
+</section>
 
-
-
-        <!-- <script src="./scroll-animation.js"></script> -->
-    </main>
-    
+<section id="lab-notes" class="lab-notes restricted">
+    <div class="section-label">University Access</div>
+    <h2>Lab Notes</h2>
+    <p class="section-intro">Lab notes are restricted to authorized university users.</p>
+    <div class="resource-card">
+        <div class="resource-title">Hato Lab Notes</div>
+        <div class="resource-meta">Access requires an authorized university account.</div>
+        <a class="resource-link" href="https://docs.google.com/document/d/1aBVnSMFC8ZFI4STuHvTEwXi6cjPYAXJOcDKFx4AnRl8/edit?usp=drive_link" target="_blank" rel="noopener noreferrer">Open Lab Notes</a>
+    </div>
+</section>
+</main>
 </body>
-
-
-
 </html>
