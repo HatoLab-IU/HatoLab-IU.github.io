@@ -3,144 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Hato Lab</title>
-    <link rel="stylesheet" href="./css/about.css">
+    <meta name="description" content="About the Hato Lab at Indiana University School of Medicine, including research, training opportunities, and the research team.">
+    <title>About | Hato Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/navbar_styles.css">
+    <style>
+        :root {
+            --navy: #17324d;
+            --navy-dark: #102437;
+            --teal: #236a72;
+            --teal-light: #eaf5f5;
+            --gold: #c59a45;
+            --ink: #24333f;
+            --muted: #5e6d78;
+            --paper: #ffffff;
+            --surface: #f5f8fa;
+            --border: #dbe4ea;
+            --shadow: 0 16px 40px rgba(16, 36, 55, 0.08);
+            --radius: 18px;
+            --max-width: 1120px;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: linear-gradient(180deg, #f8fbfc 0%, #ffffff 32%);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        a {
+            color: var(--teal);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 3px;
+        }
+
+        a:hover, a:focus-visible { color: var(--navy); }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 0 auto;
+            padding: 0;
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            list-style: none;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 10px 14px;
+            color: var(--navy);
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        nav a:hover, nav a:focus-visible {
+            background: var(--teal-light);
+            color: var(--teal);
+        }
+
+        main {
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 0 auto;
+            padding: 64px 0 96px;
+        }
+
+        .hero {
+            max-width: 820px;
+            margin-bottom: 56px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--teal);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h1, h2 {
+            margin-top: 0;
+            font-family: "Source Serif 4", Georgia, serif;
+            color: var(--navy);
+            line-height: 1.18;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: clamp(2.5rem, 5vw, 4.25rem);
+        }
+
+        h2 {
+            margin-bottom: 18px;
+            font-size: clamp(1.75rem, 3vw, 2.4rem);
+        }
+
+        p { margin: 0 0 20px; }
+        p:last-child { margin-bottom: 0; }
+
+        .lead {
+            color: var(--muted);
+            font-size: clamp(1.08rem, 1.4vw, 1.22rem);
+        }
+
+        section {
+            margin-top: 56px;
+            padding: 40px;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            scroll-margin-top: 88px;
+        }
+
+        .section-label {
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .bio-grid, .pi-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .pi-grid {
+            grid-template-columns: 300px minmax(0, 1fr);
+        }
+
+        .image-wrapper img, .pi-grid > img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+        }
+
+        .image-wrapper img {
+            box-shadow: 0 12px 28px rgba(16, 36, 55, 0.12);
+        }
+
+        .citation-link { white-space: nowrap; }
+
+        .opportunity {
+            background: linear-gradient(145deg, #f8fbfb 0%, #ffffff 65%);
+            border-left: 5px solid var(--teal);
+        }
+
+        .opportunity .inner { max-width: 900px; }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .link-card {
+            display: block;
+            padding: 18px 20px;
+            color: var(--navy);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .link-card:hover, .link-card:focus-visible {
+            background: var(--teal-light);
+            border-color: #c4dfe0;
+            color: var(--teal);
+        }
+
+        .team-section > ul {
+            margin: 0;
+            padding-left: 1.3rem;
+        }
+
+        .team-section li { margin-bottom: 7px; }
+
+        .subheading {
+            margin: 34px 0 14px;
+            font-family: "Source Serif 4", Georgia, serif;
+            color: var(--navy);
+            font-size: 1.45rem;
+        }
+
+        .previous-members {
+            margin-top: 26px;
+            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .previous-members h2 {
+            margin-bottom: 14px;
+            font-size: 1.45rem;
+        }
+
+        .previous-members ul {
+            margin: 0;
+            padding-left: 1.3rem;
+            columns: 2;
+            column-gap: 40px;
+        }
+
+        .previous-members li {
+            margin-bottom: 7px;
+            break-inside: avoid;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .gallery .image-wrapper { overflow: hidden; border-radius: 14px; }
+        .gallery img { width: 100%; height: 240px; object-fit: cover; display: block; transition: transform 0.25s ease; }
+        .gallery img:hover { transform: scale(1.025); }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (max-width: 800px) {
+            body { font-size: 16px; }
+            main { padding-top: 40px; }
+            section { padding: 28px 24px; }
+            .bio-grid, .pi-grid { grid-template-columns: 1fr; }
+            .pi-grid > img { max-width: 360px; }
+            .links-grid, .gallery { grid-template-columns: 1fr 1fr; }
+            .previous-members ul { columns: 1; }
+            nav ul { justify-content: center; }
+        }
+
+        @media (max-width: 520px) {
+            nav ul { width: min(var(--max-width), calc(100% - 20px)); gap: 2px; }
+            nav a { padding: 9px 10px; font-size: 0.92rem; }
+            main { width: min(var(--max-width), calc(100% - 24px)); padding-bottom: 64px; }
+            section { padding: 24px 18px; border-radius: 14px; }
+            .links-grid, .gallery { grid-template-columns: 1fr; }
+            .gallery img { height: 250px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .gallery img { transition: none; }
+        }
+
+        @media (prefers-contrast: more) {
+            :root { --border: #aab9c2; --muted: #42535e; }
+            a { text-decoration-thickness: 2px; }
+        }
+    </style>
 </head>
 <body>
-    <!-- navigation bar -->
-    <nav>
+    <nav aria-label="Primary navigation">
         <ul>
-            <a href="index.html">
-                <li>Home</li>
-            </a>
-            <a href="about.html">
-                <li>About</li>
-            </a>
-            <a href="data.html">
-                <li>Data</li>
-            </a>
-            <a href="images.html">
-                <li>Images</li>
-            </a>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" aria-current="page">About</a></li>
+            <li><a href="data.html">Data</a></li>
+            <li><a href="images.html">Images</a></li>
         </ul>
     </nav>
+
     <main>
-      <!-- About section -->
+        <header class="hero">
+            <span class="eyebrow">Hato Laboratory · Indiana University</span>
+            <h1>About the Hato Lab</h1>
+            
+        </header>
+
         <section id="bio">
-            <div class="description">
-                <h1>About the Hato lab</h1>
-                <p>
-                    Broadly, our research focuses on understanding the remarkable plasticity and resilience of biologic systems, using the kidney as a model organ. Kidney injury is a devastating condition, yet under certain circumstances, the kidney can adopt a recovery phenotype and restore function. Our current efforts are directed at elucidating the timeline of acute kidney injury (AKI) in the setting of sepsis and uncovering the molecular mechanisms that drive this process. Sepsis-associated AKI is a complex pathologic state that progresses at a fast pace (Janosevic et al., eLife 2021). Our work has provided insights into the evolution of this syndrome as well as potential strategies for harnessing endogenous recovery mechanisms. For example, we have shown that bacterial sepsis provokes robust antiviral responses in the kidney, leading to translation shutdown (Hato et al., JCI 2019; Kidwell et al., JASN 2023). These inflammatory cascades trigger the generation of endogenous double-stranded RNA, creating a state that mimics viral infections. The resulting self-RNA overburden subsequently cues tissue repair by inducing adenosine-to-inosine RNA editing and polyamine biosynthesis, thereby linking early inflammation to recovery (Heruye et al., JCI 2024). Our laboratory employs multiple research tools, including advanced imaging, sequencing, bioinformatics, and RNA-based methodologies (e.g., ribosome profiling, antisense oligonucleotides, genome editing; Uchida et al., JCI 2019, Hato et al., JASN 2017, 2018). A recent review summarizes our current understanding of the molecular mechanisms underlying sepsis-associated AKI (Hato et al., JASN 2025).   
-                </p>
-            </div>
-            <div class="image-wrapper">
-            <img src="./images/lab-7-25-2024.jpg" alt="Hato's team" style="max-width:600px; height:auto;">
+            <div class="bio-grid">
+                <div>
+                    <p>Broadly, our research seeks to understand the remarkable plasticity and resilience of biologic systems, using the kidney as a model organ. Kidney injury can be devastating, yet under certain circumstances, the kidney activates adaptive recovery programs and restores function. Our research goal is to define these endogenous mechanisms of resilience and determine how they can be harnessed therapeutically.</p>
+                    <p>One major focus of our laboratory is acute kidney injury during sepsis. Sepsis-associated acute kidney injury is a complex pathologic state that progresses at a fast pace. Our work has helped define the temporal evolution of this syndrome and identify molecular pathways that connect the initial inflammatory response to subsequent tissue recovery (<a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/40601936/" target="_blank" rel="noopener noreferrer">Hato et al., JASN 2025</a>).</p>
+                    <p>For example, we have shown that bacterial sepsis elicits a robust antiviral-like response in the kidney, resulting in profound suppression of translation at a specific time point (<a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/30507610/" target="_blank" rel="noopener noreferrer">Hato et al., JCI 2019</a>, <a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/36283811/" target="_blank" rel="noopener noreferrer">Kidwell et al., JASN 2023</a>). These inflammatory cascades trigger the generation of endogenous double-stranded RNA, creating a cellular state that resembles viral infection. The resulting burden of self-RNA subsequently activates adaptive programs, including adenosine-to-inosine RNA editing and polyamine biosynthesis, providing a mechanistic link between early inflammation and recovery (<a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/33448928/" target="_blank" rel="noopener noreferrer">Janosevic et al., eLife 2021</a>, <a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/38954486/" target="_blank" rel="noopener noreferrer">Heruye et al., JCI 2024</a>).</p>
+                    <p>To investigate these processes across molecular, cellular, and tissue scales, our laboratory combines advanced imaging, sequencing with custom library preparation, dual-species sequencing, genome editing, and RNA-based approaches, including ribosome profiling and antisense oligonucleotides (<a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/28250053/" target="_blank" rel="noopener noreferrer">Hato et al., JASN 2017</a>, <a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/29018138/" target="_blank" rel="noopener noreferrer">Hato et al., JASN 2018</a>, <a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/31424427/" target="_blank" rel="noopener noreferrer">Uchida et al., JCI 2019</a>, <a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/33893305/" target="_blank" rel="noopener noreferrer">Saxena et al., Nature Commun. 2021</a>, <a class="citation-link" href="https://pubmed.ncbi.nlm.nih.gov/40198127/" target="_blank" rel="noopener noreferrer">Nanamatsu et al., JCI 2025</a>).</p>
+                    <p>Our research has been funded by the National Institutes of Health (NIH) and the U.S. Department of Veterans Affairs (VA).</p>
+                </div>
+                <div class="image-wrapper">
+                    <img src="./images/lab-7-25-2024.jpg" alt="Hato Lab team" loading="lazy">
+                </div>
             </div>
         </section>
+
+        <section id="opportunities" class="opportunity">
+            <div class="inner">
+                <div class="section-label">Training & Research</div>
+                <h2>Research Opportunities – Join us</h2>
+                <p>Infectious diseases remain a major and evolving threat to human health. Using the kidney as a model organ, our laboratory investigates how microbial signals shape tissue function, adaptation, and disease. The kidney is a highly specialized and physiologically complex organ, providing a powerful system for studying host–microbe interactions in health and disease. We are particularly interested in elucidating bacterial adaptation strategies within the inner medulla, the principal site of urine concentration and an underappreciated bacterial reservoir. With the highest osmolality in the body, the inner medulla constitutes an extreme microenvironment in which intense host-microbe interactions and competition occur. We employ a range of approaches, including bacterial and host genome editing, transposon mutagenesis, dual-species sequencing, and complementary functional assays, to dissect host and bacterial pathways at the molecular level.</p>
+                <p>Students and fellows joining the lab will gain hands-on experience with modern experimental approaches while developing a strong conceptual foundation in host–microbe biology, kidney physiology, and disease mechanisms. Our research program lies at the intersection of microbiology, molecular biology, and organ physiology, offering a collaborative and interdisciplinary training environment in which researchers can develop independent scientific questions and build toward successful careers in biomedical research.</p>
+				<p>Research opportunities are available at various career stages. We welcome inquiries from prospective students, fellows, and other scientists interested in our research. Please contact us directly by email at thato@iu.edu.</p>
+            </div>
+        </section>
+
         <section id="PI">
-            <img src="./images/hato_team.JPG" alt="Takashi Hato, MD">
-            <div class="description">
-                <h1>Principal Investigator</h1>
-                <p>
-                    Dr. Hato is the Gilman-Brater Associate Professor of Medicine and Adjunct Associate Professor of Medical & Molecular Genetics at Indiana University School of Medicine, as well as a staff physician at the Indianapolis VA Medical Center. He completed his postgraduate training in both Japan and the United States. He then worked as a hospitalist and clinical educator before joining the faculty at Indiana University, Division of Nephrology. Dr. Hato is the recipient of several awards including The Indiana University Board of Trustees Teaching Award, Indiana University Department of Medicine Outstanding Early Career Investigator Award, and Ralph W. and Grace M. Showalter Research Trust Fund Showalter Scholar. He is an elected member of the American Society for Clinical Investigation (ASCI). His research interests are centered on the discovery of targeted therapies for sepsis-induced organ failure. His research has been funded by the NIH and VA. 
-                </p>
+            <div class="pi-grid">
+                <img src="./images/hato_team.JPG" alt="Takashi Hato, MD" loading="lazy">
+                <div>
+                    <div class="section-label"></div>
+                    <h2>Principal Investigator</h2>
+                    <p>Dr. Hato is the Gilman-Brater Associate Professor of Medicine and Adjunct Associate Professor of Medical &amp; Molecular Genetics at Indiana University School of Medicine and a staff physician at the Indianapolis VA Medical Center. He completed his postgraduate training in both Japan and the United States and subsequently pursued postdoctoral research while also working as a hospitalist and educator. He later joined the faculty at Indiana University, Division of Nephrology, where his laboratory investigates the molecular mechanisms of sepsis-induced organ injury and recovery, with the long-term goal of identifying new therapeutic strategies for organ failure. Dr. Hato has received several honors for his contributions to research and education, including the Indiana University Board of Trustees Teaching Award, Indiana University Department of Medicine Outstanding Early Career Investigator Award, and recognition as a Ralph W. and Grace M. Showalter Research Trust Fund Showalter Scholar. He is an elected member of the American Society for Clinical Investigation (ASCI).</p>
+                </div>
             </div>
         </section>
 
         <section id="links">
-            <h1>Links</h1>
-            <p><a href="https://github.com/hato-lab">Hato Lab</a></p>
-            <p><a href="https://www.ncbi.nlm.nih.gov/myncbi/1bAUDew_-nZk7/bibliography/public/">Complete list of published works on PubMed</a></p>
-            <p><a href="https://orcid.org/0000-0002-0446-6575">ORCID</a></p>
+            <div class="section-label">Connect</div>
+            <h2>Links</h2>
+            <div class="links-grid">
+                <a class="link-card" href="https://orcid.org/0000-0002-0446-6575" target="_blank" rel="noopener noreferrer">ORCID</a>
+            </div>
         </section>
 
-        <section id="team">
-            <h1>Research Team</h1>
+        <section id="team" class="team-section">
+            <div class="section-label">People</div>
+            <h2>Research Team</h2>
             <ul>
-                <li>Amy Zollman (lab manager)</li>
-                <li>Jered Myslinski (bioinformatician)</li>
-                <li>Annie Long (The Lilly Graduate Research Advanced Degrees program)</li>
-                <li>Shinichi Makino (research fellow)</li>
-                <li>Pierre Dagher (collaborator)</li>
-                <li>Nobuhiro Kanazawa (research fellow)</li>
+                <li>Amy Zollman, RVT, LATg (Lab Manager)</li>
+                <li>Jered Myslinski, BS (Bioinformatician)</li>
+                <li>Annie Long (PhD student, The Lilly Graduate Research Advanced Degrees Program)</li>
+                <li>Shinichi Makino, MD, PhD (Postdoctoral fellow)</li>
+                <li>Pierre Dagher, MD (Collaborator)</li>
+				<li>Sayumi Otani, MD (Research analyst)</li>
+				<li>Claire Mauer, BS (Research analyst)</li>
             </ul>
-            <h1>2025 Summer Student</h1>
-            <ul>
-                <li>Annabelle White (Undergraduate at Johns Hopkins University)</li>
-            </ul>
-            <p><br></p>
-            <button type="button" class="collapsible">
-                <h2>Previous Lab Members/Rotation Students (click to view)</h2>
-            </button>
-            <div class="content">
+
+            <div class="previous-members">
+                <h2>Lab Alumni</h2>
                 <ul>
-                    <li>Caroline Martens (MD/PhD, visiting scholar, KU Leuven)</li>
-                    <li>Segewkal Hawaze Heruye (industry)</li>
-                    <li>Maggie Mattek (University of Wisconsin)</li>
-                    <li>Jodi Yanagita (Nephrology Private Practice)</li>
-                    <li>Arvin Halim (PhD candidate at IU)</li>
-                    <li>Ryan Tsai (Undergraduate at Perdue University)</li>
+                    <li>Caroline Martens MD, PhD (Visiting scholar; Nephrologist, KU Leuven)</li>
+					<li>Nobuhiro Kanazawa, MD, PhD (Postdoctoral fellow; Nephrologist, Tokyo)</li>
+                    <li>Segewkal Hawaze Heruye, PhD (Postdoctoral fellow; Industry, FMC Corp)</li>
+					<li>Annabelle White (Undergraduate at Johns Hopkins University)</li>
+                    <li>Jodi Yanagita, DO (Nephrology Private Practice)</li>
                     <li>Ashley Kidwell (MD/PhD candidate at Texas A&amp;M)</li>
-                    <li>Bernard Maier (Assistant research professor at IU Hematology/Oncology)</li>
-                    <li>Danielle Janosevic (Assistant professor at IU Nephrology)</li>
-                    <li>David Rodriguez (graduate student at IU)</li>
-                    <li>Franziska Blender (University of Potsdam)</li>
-                    <li>Kevin Ni (Internal medicine resident at University of Colorado)</li>
-                    <li>Madelyn Chadwick (Purdue University)</li>
-                    <li>S. Louise Pay (writer/editor)</li>
-                    <li>Shiv Pratap Singh Yadav</li>
-                    <li>Thomas McCarthy (industry)</li>
-                    <li>Zain Siddiqui (Indiana University)</li>
-                    
-                    
-                                    </ul>
+                    <li>Bernard Maier, PhD (Assistant Research Professor at IU Hematology/Oncology)</li>
+                    <li>Danielle Janosevic, DO (Assistant professor at IU Nephrology)</li>
+                    <li>S. Louise Pay, PhD (Writer/Editor)</li>
+                    <li>Shiv Pratap Singh Yadav, PhD</li>
+                    <li>Thomas McCarthy, PhD (Bioinformatician)</li>
+                </ul>
+			</div>
+			
+			<div class="previous-members">
+                <h2>Rotation &amp; Internship</h2>
+                <ul>
+                    <li>Maggie Mattek (University of Wisconsin)</li>
+					<li>Ainee Martin (MD candidate at Penn State)</li>
+					<li>Ester Par (High school student)</li>
+					<li>Ryan Tsai (Purdue University)</li>
+					<li>Madelyn Chadwick (DO candidate at Marian University)</li>
+					<li>Arvin Halim, PhD (MD candidate at IU)</li>
+					<li>David Rodriguez (PhD student at IU)</li>
+                    <li>Kevin Ni, MD, PhD (Endocrinologist at University of Colorado)</li>
+					<li>Zain Siddiqui, DO (Marian University)</li>
+					<li>Franziska Blender (University of Potsdam)</li>
+				<ul>
             </div>
+			
         </section>
 
         <section id="images">
-            <div class="image-wrapper">
-                <img src="./images/MRSA.jpg" class="vertical" alt="caroline stands in front of kidney tissue images">
-            </div>
-            <div class="image-wrapper">
-                <img src="./images/hato_team_peace_sign.jpg" class="vertical" alt="">
-            </div>
-            <div class="image-wrapper">
-                <img src="./images/hato_team_outside.jpg" class="horizontal" alt="">
-            </div>
-            <div class="image-wrapper">
-                <img src="./images/hato_team_celebrate.jpg" class="horizontal" alt="">
-            </div>
-            <div class="image-wrapper">
-                <img src="./images/lab_picture_2025.jpg" class="horizontal" alt="Lab lunch">
-            </div>
-            <div class="image-wrapper">
-                <img src="./images/hato_lab.jpg" class="horizontal" alt="">
-            </div>
-            <div class="image-wrapper">
-                <img src="./images/lab-5-2-2025.jpg" class="vertical" alt="">
-            </div>
-            <div class="image-wrapper">
-                <img src="./images/lab-7-25-2024-b.jpg" class="horizontal" alt="">
+            <div class="section-label">Gallery</div>
+            <h2>Lab Life</h2>
+            <div class="gallery">
+                <div class="image-wrapper"><img src="./images/MRSA.jpg" alt="Caroline and Nobu" loading="lazy"></div>
+                <div class="image-wrapper"><img src="./images/hato_team_peace_sign.jpg" alt="Seg and Ichi" loading="lazy"></div>
+                <div class="image-wrapper"><img src="./images/hato_team_outside.jpg" alt="Florida" loading="lazy"></div>
+                <div class="image-wrapper"><img src="./images/hato_team_celebrate.jpg" alt="Hato Lab" loading="lazy"></div>
+                <div class="image-wrapper"><img src="./images/lab_picture_2025.jpg" alt="Hato Lab" loading="lazy"></div>
+                <div class="image-wrapper"><img src="./images/hato_lab.jpg" alt="Hato Lab" loading="lazy"></div>
+                <div class="image-wrapper"><img src="./images/lab-5-2-2025.jpg" alt="Hato Lab" loading="lazy"></div>
+                <div class="image-wrapper"><img src="./images/lab-7-25-2024-b.jpg" alt="Hato Lab" loading="lazy"></div>
             </div>
         </section>
     </main>
-
-    <script>
-        // Collapsible functionality for previous lab members section
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        }
-    </script>
 </body>
 </html>
