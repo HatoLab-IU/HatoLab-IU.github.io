@@ -23,7 +23,7 @@
             --border: #dbe4ea;
             --shadow: 0 16px 40px rgba(16, 36, 55, 0.08);
             --radius: 18px;
-            --max-width: 1120px;
+            --max-width: 1240px;
         }
 
         * { box-sizing: border-box; }
@@ -150,13 +150,16 @@
 
         .bio-grid, .pi-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-            gap: 40px;
+            gap: 48px;
             align-items: center;
         }
 
+        .bio-grid {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        }
+
         .pi-grid {
-            grid-template-columns: 300px minmax(0, 1fr);
+            grid-template-columns: 400px minmax(0, 1fr);
         }
 
         .image-wrapper img, .pi-grid > img {
@@ -349,7 +352,7 @@
         </section>
 
         <section id="links">
-            <div class="section-label">Connect</div>
+            <div class="section-label"> </div>
             <h2>Links</h2>
             <div class="links-grid">
                 <a class="link-card" href="https://orcid.org/0000-0002-0446-6575" target="_blank" rel="noopener noreferrer">ORCID</a>
