@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hato Lab resources, including mouse models, sequencing datasets, and external research links.">
+    <title>Links | Hato Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #17324d;
+            --teal: #236a72;
+            --teal-light: #eaf5f5;
+            --gold: #c59a45;
+            --ink: #24333f;
+            --muted: #5e6d78;
+            --paper: #ffffff;
+            --surface: #f5f8fa;
+            --border: #dbe4ea;
+            --shadow: 0 16px 40px rgba(16, 36, 55, 0.08);
+            --radius: 18px;
+            --max-width: 1240px;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; color: var(--ink); background: linear-gradient(180deg, #f8fbfc 0%, #ffffff 32%); font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 17px; line-height: 1.75; }
+        a { color: var(--teal); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+        a:hover, a:focus-visible { color: var(--navy); }
+        nav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); }
+        nav ul { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; padding: 0; min-height: 68px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; list-style: none; }
+        nav a { display: inline-block; padding: 10px 14px; color: var(--navy); font-weight: 600; text-decoration: none; border-radius: 10px; }
+        nav a:hover, nav a:focus-visible { background: var(--teal-light); color: var(--teal); }
+        main { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; padding: 64px 0 96px; }
+        .hero { max-width: 820px; margin-bottom: 56px; }
+        .eyebrow, .section-label { color: var(--teal); font-size: .82rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+        .eyebrow { display: inline-block; margin-bottom: 12px; }
+        h1, h2 { margin-top: 0; font-family: "Source Serif 4", Georgia, serif; color: var(--navy); line-height: 1.18; letter-spacing: -.02em; }
+        h1 { margin-bottom: 20px; font-size: clamp(2.5rem, 5vw, 4.25rem); }
+        h2 { margin-bottom: 10px; font-size: clamp(1.75rem, 3vw, 2.4rem); }
+        p { margin: 0 0 20px; }
+        section { margin-top: 40px; padding: 36px 40px; background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+        .section-label { margin-bottom: 8px; color: var(--gold); letter-spacing: .1em; }
+        .section-intro { max-width: 780px; color: var(--muted); margin-bottom: 24px; }
+        .resource-list { display: grid; gap: 14px; }
+        .resource-card { padding: 20px 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
+        .resource-title { font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+        .resource-meta { color: var(--muted); margin-bottom: 7px; }
+        .resource-link { font-weight: 600; }
+        .external-links { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin-top: 18px; }
+        .link-card { display: block; padding: 18px 20px; color: var(--navy); background: var(--surface); border: 1px solid var(--border); border-radius: 14px; font-weight: 600; text-decoration: none; }
+        .link-card:hover, .link-card:focus-visible { background: var(--teal-light); border-color: #c4dfe0; color: var(--teal); }
+        @media (max-width: 800px) {
+            body { font-size: 16px; }
+            main { padding-top: 40px; }
+            section { padding: 28px 24px; }
+            .external-links { grid-template-columns: 1fr 1fr; }
+            nav ul { justify-content: center; flex-wrap: wrap; }
+        }
+        @media (max-width: 520px) {
+            nav ul { width: min(var(--max-width), calc(100% - 20px)); gap: 2px; }
+            nav a { padding: 9px 10px; font-size: .92rem; }
+            main { width: min(var(--max-width), calc(100% - 24px)); padding-bottom: 64px; }
+            section { padding: 24px 18px; border-radius: 14px; }
+            .external-links { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    </style>
+</head>
+<body>
+    <nav aria-label="Primary navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="data.html">Data</a></li>
+            <li><a href="links.html" aria-current="page">Links</a></li>
+            <li><a href="images.html">Images</a></li>
+        </ul>
+    </nav>
+    <main>
+        <header class="hero">
+            <span class="eyebrow">Hato Laboratory · Indiana University</span>
+            <h1>Resources &amp; Links</h1>
+            <p class="section-intro">Selected resources from the Hato Lab, including mouse models and publicly available sequencing datasets.</p>
+        </header>
+
+        <section id="mouse-models">
+            <div class="section-label">Mouse Models</div>
+            <h2>Mouse models</h2>
+            <p class="section-intro">Mouse models available through The Jackson Laboratory.</p>
+            <div class="resource-list">
+                <div class="resource-card">
+                    <div class="resource-title">Azin1 A-to-I locked mouse model</div>
+                    <div class="resource-meta">C57BL/6J-<i>Azin1em1Hato</i>/J</div>
+                    <a class="resource-link" href="https://www.jax.org/strain/040196" target="_blank" rel="noopener noreferrer">JAX strain 040196</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-title">Azin1 A-to-I uneditable mouse model</div>
+                    <div class="resource-meta">C57BL/6J-<i>Azin1em2Hato</i>/J</div>
+                    <a class="resource-link" href="https://www.jax.org/strain/040197" target="_blank" rel="noopener noreferrer">JAX strain 040197</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-title">GADD34 (<i>Ppp1r15a</i>) overexpression mouse model</div>
+                    <div class="resource-meta">C57BL/6-<i>Ppp1r15aem1Hato</i>/J</div>
+                    <a class="resource-link" href="https://www.jax.org/strain/037609" target="_blank" rel="noopener noreferrer">JAX strain 037609</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sequencing-data">
+            <div class="section-label">Sequencing Data</div>
+            <h2>Sequencing datasets</h2>
+            <p class="section-intro">Selected sequencing datasets available through NCBI Gene Expression Omnibus (GEO).</p>
+            <div class="resource-list">
+                <div class="resource-card"><div class="resource-title">Kidney MRSA infection Time Course</div><div class="resource-meta">Dual-species RNA-seq</div><a class="resource-link" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE302226" target="_blank" rel="noopener noreferrer">GSE302226</a></div>
+                <div class="resource-card"><div class="resource-title">Kidney Ischemia-Reperfusion Injury Time Course</div><a class="resource-link" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE267650" target="_blank" rel="noopener noreferrer">GSE267650</a></div>
+                <div class="resource-card"><div class="resource-title">Kidney LPS Time Course</div><div class="resource-meta">Nanopore long-read RNA-seq</div><a class="resource-link" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE244942" target="_blank" rel="noopener noreferrer">GSE244942</a></div>
+                <div class="resource-card"><div class="resource-title">Kidney LPS Time Course</div><div class="resource-meta">Illumina short-read RNA-seq</div><a class="resource-link" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE247727" target="_blank" rel="noopener noreferrer">GSE247727</a></div>
+                <div class="resource-card"><div class="resource-title">Kidney LPS Time Course</div><div class="resource-meta">10x single-cell RNA-seq</div><a class="resource-link" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE151658" target="_blank" rel="noopener noreferrer">GSE151658</a></div>
+                <div class="resource-card"><div class="resource-title">Kidney LPS Time Course</div><div class="resource-meta">Ribosome profiling (Ribo-seq)</div><a class="resource-link" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120877" target="_blank" rel="noopener noreferrer">GSE120877</a></div>
+                <div class="resource-card"><div class="resource-title">Kidney LPS Time Course</div><div class="resource-meta">Double-stranded RNA-seq</div><a class="resource-link" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE244941" target="_blank" rel="noopener noreferrer">GSE244941</a></div>
+            </div>
+        </section>
+
+        <section id="external-links">
+            <div class="section-label">Other Links</div>
+            <h2></h2>
+            <div class="external-links">
+                <a class="link-card" href="https://orcid.org/0000-0002-0446-6575" target="_blank" rel="noopener noreferrer">ORCID</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
