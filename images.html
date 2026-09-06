@@ -174,6 +174,31 @@
             font-size: .82rem;
             font-weight: 700;
         }
+        .video-media {
+            position: relative;
+            background: #0f1f2d;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+        .video-media video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #0f1f2d;
+        }
+        .local-badge {
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: rgba(16,36,55,.88);
+            color: #fff;
+            font-size: .78rem;
+            font-weight: 700;
+            pointer-events: none;
+        }
         .video-info { padding: 20px 20px 22px; }
         .video-title { margin-bottom: 8px; }
         .video-subtitle {
@@ -206,6 +231,7 @@
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .thumbnail-wrap img { transition: none; }
+            .video-media video { transition: none; }
         }
 
         @media (prefers-contrast: more) {
@@ -229,7 +255,7 @@
         <header class="hero">
             <span class="eyebrow">Hato Laboratory · Indiana University</span>
             <h1>Imaging &amp; Video Resources</h1>
-            <p class="hero-intro">Selected videos from the Hato Lab, highlighting experimental techniques, intravital kidney imaging, and myeloid cell dynamics.</p>
+            <p class="hero-intro">Selected videos from the Hato Lab, highlighting experimental techniques, intravital kidney imaging, and myeloid cell dynamics. Shorter videos are shown as looping previews when available.</p>
         </header>
 
         <section id="experimental-techniques">
@@ -241,19 +267,19 @@
                     <a href="https://drive.google.com/file/d/1f_nIfejrSD88r3jplhvRG4mQ3Z70yz8N/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                         <div class="thumbnail-wrap">
                             <img src="./images/IJ_screenshot.jpg" alt="Mouse jugular vein catheterization video thumbnail" loading="lazy">
-                            <span class="watch-badge">Watch video</span>
+                            <span class="watch-badge">Watch full video</span>
                         </div>
                         <div class="video-info"><h3 class="video-title">Mouse Jugular Vein Catheterization</h3></div>
                     </a>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1TqJmuBboRjxN3HhScVWknuZMllwzKDiq/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap">
-                            <img src="./images/first_video.png" alt="Manual microdissection of mouse kidney tubules video thumbnail" loading="lazy">
-                            <span class="watch-badge">Watch video</span>
-                        </div>
-                        <div class="video-info"><h3 class="video-title">Manual Microdissection of Mouse Kidney Tubules</h3></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/first_video.png" aria-label="Manual Microdissection of Mouse Kidney Tubules">
+                            <source src="./videos/Video_01_Microdissection.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Manual Microdissection of Mouse Kidney Tubules</h3></div>
                 </article>
             </div>
         </section>
@@ -264,40 +290,58 @@
             <p class="section-intro">Live imaging of kidney structure, injury, mitochondria, and renal tubules.</p>
             <div class="video-grid">
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1aRqmyGIpnbFsCuRug5aYXaOHxGjHMG0o/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/second_video.png" alt="Real-time acute tubular necrosis by intravital microscopy video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Real-Time Acute Tubular Necrosis by Intravital Microscopy</h3><p class="video-subtitle"><strong>Red:</strong> TMRM (mitochondrial membrane potential); <strong>Green:</strong> autofluorescence; <strong>Blue:</strong> DAPI (nuclei)</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/second_video.png" aria-label="Real-Time Acute Tubular Necrosis by Intravital Microscopy">
+                            <source src="./videos/Video_02_Mouse_Kidney_Tmrm.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Real-Time Acute Tubular Necrosis by Intravital Microscopy</h3><p class="video-subtitle"><strong>Red:</strong> TMRM (mitochondrial membrane potential); <strong>Green:</strong> autofluorescence; <strong>Blue:</strong> DAPI (nuclei)</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1B-w1vLQgh2zedcZsi1GC9Ay2HL5hK638/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/eigth_video.png" alt="Glomerulus imaging video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Glomerulus</h3><p class="video-subtitle"><strong>Red:</strong> LPS-rhodamine; <strong>Green:</strong> CAG-GFP</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/eigth_video.png" aria-label="Glomerulus">
+                            <source src="./videos/Video_08_Kidney_Cag_Gfp.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Glomerulus</h3><p class="video-subtitle"><strong>Red:</strong> LPS-rhodamine; <strong>Green:</strong> CAG-GFP</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1dgd7SqXWcGO2ajEivAE_AT9p7Ct2CyeV/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/ninth_video.png" alt="Mitochondria in the kidney imaging video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Mitochondria in the Kidney</h3><p class="video-subtitle"><strong>Red:</strong> photoactivated mitochondrial Dendra2; <strong>Green:</strong> mitochondrial Dendra2</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/ninth_video.png" aria-label="Mitochondria in the Kidney">
+                            <source src="./videos/video_09_kidney_mito_dendra2.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Mitochondria in the Kidney</h3><p class="video-subtitle"><strong>Red:</strong> photoactivated mitochondrial Dendra2; <strong>Green:</strong> mitochondrial Dendra2</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1i6Qbkb-bfm0ieAbanDWYmzIvf0Bd88Xp/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/tenth_video.png" alt="Myeloid cells in the kidney bone marrow chimera video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (6)</h3><p class="video-subtitle">Bone marrow chimera generated by transplantation of mito-Dendra2 bone marrow into wild-type recipients. <strong>Green:</strong> mitochondrial Dendra2; <strong>dark green/yellow:</strong> autofluorescence</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/tenth_video.png" aria-label="Myeloid Cells in the Kidney (6)">
+                            <source src="./videos/video_10_kidney_mito_dendra2_chimera.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (6)</h3><p class="video-subtitle">Bone marrow chimera generated by transplantation of mito-Dendra2 bone marrow into wild-type recipients. <strong>Green:</strong> mitochondrial Dendra2; <strong>dark green/yellow:</strong> autofluorescence</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1YeyED4eoVwX8BjGMBp3dKw0B2FDTnj48/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/eleventh_video.png" alt="Renal tubules video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Renal Tubules (1)</h3></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/eleventh_video.png" aria-label="Renal Tubules (1)">
+                            <source src="./videos/video_11_kidney.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Renal Tubules (1)</h3></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/124YgVEJnq_IgEwesU9JayxaCkksDNVBt/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/thirteenth_video.png" alt="Renal tubules video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Renal Tubules (2)</h3></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/thirteenth_video.png" aria-label="Renal Tubules (2)">
+                            <source src="./videos/Video_13_Kidney.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Renal Tubules (2)</h3></div>
                 </article>
                 <article class="video-card">
                     <a href="https://drive.google.com/file/d/1EiqKTgWBSKWHuvsfJ3O0esOeMC9Ujr4c/view?usp=sharing" target="_blank" rel="noopener noreferrer">
@@ -306,10 +350,13 @@
                     </a>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1J2Q5HbcxNKT_mb8sK5_XOzYiUHg42wi8/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/sixteenth_video.png" alt="Renal tubules with Alexa488-P22 video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Renal Tubules (3)</h3><p class="video-subtitle"><strong>Green:</strong> Alexa488-P22 (60-nm icosahedral virus-like protein cage)</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/sixteenth_video.png" aria-label="Renal Tubules (3)">
+                            <source src="./videos/video_16_P22.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Renal Tubules (3)</h3><p class="video-subtitle"><strong>Green:</strong> Alexa488-P22 (60-nm icosahedral virus-like protein cage)</p></div>
                 </article>
             </div>
         </section>
@@ -320,43 +367,69 @@
             <p class="section-intro">Intravital imaging of myeloid cells and related fluorescent reporters in the kidney.</p>
             <div class="video-grid">
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/16tO81LLHD_pJLI_C63Jhk1bf0p-r6nn4/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/third_video.png" alt="Myeloid cells in the kidney video 1 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (1)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/third_video.png" aria-label="Myeloid Cells in the Kidney (1)">
+                            <source src="./videos/Video_03_Kidney_Cx3cr1_Gfp_Polyic_Rhodamine.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (1)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1VtZv4sI_Si50T9VSIuxw5FYKjkeKo2aU/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/4th_video.png" alt="Myeloid cells in the kidney video 2 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (2)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/4th_video.png" aria-label="Myeloid Cells in the Kidney (2)">
+                            <source src="./videos/Video_04_Kidney_Cx3cr1_Gfp_Polyic_Rhodamine.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (2)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1ls0ed2T2MJXU3d55Akx0zLkF3zSr-SyV/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/fifth_video.png" alt="Myeloid cells in the kidney video 3 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (3)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/fifth_video.png" aria-label="Myeloid Cells in the Kidney (3)">
+                            <source src="./videos/video_05_kidney_CX3CR1_GFP_polyIC_rhodamine.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (3)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1PDjmTF4sDqs5FUFQLNtaZiZ6gjRuQPFo/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/sixth_video.png" alt="Myeloid cells in the kidney video 4 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (4)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/sixth_video.png" aria-label="Myeloid Cells in the Kidney (4)">
+                            <source src="./videos/video_06_kidney_CX3CR1_GFP_polyIC_rhodamine.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (4)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1CWiquMvfAtEnWuq6cwmhZ74AJilkv_oI/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/seventh_video.png" alt="Myeloid cells in the kidney video 5 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (5)</h3><p class="video-subtitle"><strong>Green:</strong> CX3CR1-GFP</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/seventh_video.png" aria-label="Myeloid Cells in the Kidney (5)">
+                            <source src="./videos/video_07_kidney_CX3CR1_GFP.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (5)</h3><p class="video-subtitle"><strong>Green:</strong> CX3CR1-GFP</p></div>
                 </article>
                 <article class="video-card">
-                    <a href="https://drive.google.com/file/d/1BT8Wwc01RsGv3p40rf7d2PvyS2mhhvd1/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <div class="thumbnail-wrap"><img src="./images/twelth_video.png" alt="Myeloid cells in the kidney video 7 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
-                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (7)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
-                    </a>
+                    <div class="video-media">
+                        <video autoplay muted loop playsinline controls preload="metadata" poster="./images/twelth_video.png" aria-label="Myeloid Cells in the Kidney (7)">
+                            <source src="./videos/video_12_kidney.mp4" type="video/mp4">
+                        </video>
+                        <span class="local-badge">Looping preview</span>
+                    </div>
+                    <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (7)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
                 </article>
             </div>
         </section>
     </main>
+    <script>
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.querySelectorAll(".video-media video").forEach(function (video) {
+                video.pause();
+                video.removeAttribute("autoplay");
+            });
+        }
+    </script>
 </body>
 </html>
