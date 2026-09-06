@@ -3,47 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/navbar_styles.css">
-    <link rel="stylesheet" href="./css/images_page_styles.css">
+    <meta name="description" content="Hato Lab imaging and video resources, including intravital microscopy, kidney imaging, and experimental techniques.">
+    <title>Imaging &amp; Video Resources | Hato Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #17324d;
+            --navy-dark: #102437;
+            --teal: #236a72;
+            --teal-light: #eaf5f5;
+            --gold: #c59a45;
+            --ink: #24333f;
+            --muted: #61717d;
+            --paper: #ffffff;
+            --surface: #f5f8fa;
+            --border: #dbe4ea;
+            --shadow: 0 14px 36px rgba(16, 36, 55, 0.08);
+            --radius: 18px;
+            --max-width: 1240px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: linear-gradient(180deg, #f8fbfc 0%, #ffffff 30%);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--teal);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 3px;
+        }
+        a:hover, a:focus-visible { color: var(--navy); }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(255,255,255,.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        nav ul {
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 0 auto;
+            padding: 0;
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            list-style: none;
+        }
+        nav a {
+            display: inline-block;
+            padding: 10px 14px;
+            color: var(--navy);
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+        nav a:hover, nav a:focus-visible {
+            background: var(--teal-light);
+            color: var(--teal);
+            outline: none;
+        }
+        nav a[aria-current="page"] {
+            background: var(--teal-light);
+            color: var(--teal);
+        }
+
+        main {
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 0 auto;
+            padding: 64px 0 96px;
+        }
+
+        .hero { max-width: 860px; margin-bottom: 54px; }
+        .eyebrow, .section-label {
+            color: var(--gold);
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .eyebrow { display: inline-block; margin-bottom: 12px; }
+
+        h1, h2, h3 {
+            margin-top: 0;
+            font-family: "Source Serif 4", Georgia, serif;
+            color: var(--navy);
+            line-height: 1.18;
+            letter-spacing: -.02em;
+        }
+        h1 {
+            margin-bottom: 18px;
+            font-size: clamp(2.6rem, 5vw, 4.4rem);
+        }
+        h2 {
+            margin-bottom: 10px;
+            font-size: clamp(1.9rem, 3vw, 2.5rem);
+        }
+        h3 { margin-bottom: 6px; font-size: 1.35rem; }
+        p { margin: 0 0 18px; }
+
+        .hero-intro {
+            max-width: 800px;
+            color: var(--muted);
+            font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+        }
+
+        section {
+            margin-top: 42px;
+            padding: 36px 40px 40px;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            scroll-margin-top: 88px;
+        }
+        .section-label { margin-bottom: 8px; }
+        .section-intro { max-width: 780px; color: var(--muted); margin-bottom: 26px; }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+        }
+        .video-card {
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(16,36,55,.06);
+        }
+        .video-card a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+        .thumbnail-wrap {
+            position: relative;
+            background: #e9eef1;
+            overflow: hidden;
+        }
+        .thumbnail-wrap img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            transition: transform .25s ease;
+        }
+        .video-card a:hover .thumbnail-wrap img,
+        .video-card a:focus-visible .thumbnail-wrap img { transform: scale(1.02); }
+        .watch-badge {
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: rgba(16,36,55,.9);
+            color: #fff;
+            font-size: .82rem;
+            font-weight: 700;
+        }
+        .video-info { padding: 20px 20px 22px; }
+        .video-title { margin-bottom: 8px; }
+        .video-subtitle {
+            margin: 0;
+            color: var(--muted);
+            font-size: .94rem;
+            line-height: 1.55;
+        }
+        .video-card a:focus-visible {
+            outline: 3px solid rgba(35,106,114,.28);
+            outline-offset: -3px;
+        }
+
+        @media (max-width: 820px) {
+            body { font-size: 16px; }
+            main { padding-top: 40px; }
+            section { padding: 28px 24px 32px; }
+            .video-grid { grid-template-columns: 1fr; }
+            nav ul { justify-content: center; flex-wrap: wrap; }
+        }
+
+        @media (max-width: 520px) {
+            nav ul { width: calc(100% - 20px); gap: 2px; }
+            nav a { padding: 9px 10px; font-size: .92rem; }
+            main { width: calc(100% - 24px); padding-bottom: 64px; }
+            section { padding: 24px 18px 28px; border-radius: 14px; }
+            .video-info { padding: 18px 18px 20px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .thumbnail-wrap img { transition: none; }
+        }
+
+        @media (prefers-contrast: more) {
+            :root { --border: #aab9c2; --muted: #445762; }
+            a { text-decoration-thickness: 2px; }
+        }
+    </style>
 </head>
 <body>
-    <nav>
+    <nav aria-label="Primary navigation">
         <ul>
-          <a href="index.html">
-            <li>Home</li>
-          </a>
-          <a href="about.html">
-            <li>About</li>
-          </a>
-          <a href="data.html">
-            <li>Data</li>
-          </a>
-          <a href="images.html">
-            <li>Images</li>
-          </a>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="data.html">Data</a></li>
+            <li><a href="links.html">Links</a></li>
+            <li><a href="images.html" aria-current="page">Images</a></li>
         </ul>
-      </nav>
-      <section id="videos">
-        <a href="https://drive.google.com/file/d/1TqJmuBboRjxN3HhScVWknuZMllwzKDiq/view?usp=sharing"><img src="./images/first_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1aRqmyGIpnbFsCuRug5aYXaOHxGjHMG0o/view?usp=sharing"><img src="./images/second_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/16tO81LLHD_pJLI_C63Jhk1bf0p-r6nn4/view?usp=sharing"><img src="./images/third_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1VtZv4sI_Si50T9VSIuxw5FYKjkeKo2aU/view?usp=sharing"><img src="./images/4th_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1ls0ed2T2MJXU3d55Akx0zLkF3zSr-SyV/view?usp=sharing"><img src="./images/fifth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1PDjmTF4sDqs5FUFQLNtaZiZ6gjRuQPFo/view?usp=sharing"><img src="./images/sixth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1CWiquMvfAtEnWuq6cwmhZ74AJilkv_oI/view?usp=sharing"><img src="./images/seventh_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1B-w1vLQgh2zedcZsi1GC9Ay2HL5hK638/view?usp=sharing"><img src="./images/eigth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1dgd7SqXWcGO2ajEivAE_AT9p7Ct2CyeV/view?usp=sharing"><img src="./images/ninth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1i6Qbkb-bfm0ieAbanDWYmzIvf0Bd88Xp/view?usp=sharing"><img src="./images/tenth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1YeyED4eoVwX8BjGMBp3dKw0B2FDTnj48/view?usp=sharing"><img src="./images/eleventh_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1BT8Wwc01RsGv3p40rf7d2PvyS2mhhvd1/view?usp=sharing"><img src="./images/twelth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/124YgVEJnq_IgEwesU9JayxaCkksDNVBt/view?usp=sharing"><img src="./images/thirteenth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1EiqKTgWBSKWHuvsfJ3O0esOeMC9Ujr4c/view?usp=sharing"><img src="./images/fourteenth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1TkttGVzwGD73SMWe7jQMcWRKNML9rqHe/view?usp=sharing"><img src="./images/fifteenth_video.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1J2Q5HbcxNKT_mb8sK5_XOzYiUHg42wi8/view?usp=sharing"><img src="./images/sixteenth_video.png" alt=""></a>
-      </section>
-    <section id="description">Click on image to see video!</section>
-</body>
+    </nav>
 
+    <main>
+        <header class="hero">
+            <span class="eyebrow">Hato Laboratory · Indiana University</span>
+            <h1>Imaging &amp; Video Resources</h1>
+            <p class="hero-intro">Selected videos from the Hato Lab, highlighting experimental techniques, intravital kidney imaging, and myeloid cell dynamics.</p>
+        </header>
+
+        <section id="experimental-techniques">
+            <div class="section-label">01 · Teaching Resources</div>
+            <h2>Laboratory Techniques</h2>
+            <p class="section-intro">These videos are provided as teaching resources.</p>
+            <div class="video-grid">
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1f_nIfejrSD88r3jplhvRG4mQ3Z70yz8N/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap">
+                            <img src="./images/IJ_screenshot.jpg" alt="Mouse jugular vein catheterization video thumbnail" loading="lazy">
+                            <span class="watch-badge">Watch video</span>
+                        </div>
+                        <div class="video-info"><h3 class="video-title">Mouse Jugular Vein Catheterization</h3></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1TqJmuBboRjxN3HhScVWknuZMllwzKDiq/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap">
+                            <img src="./images/first_video.png" alt="Manual microdissection of mouse kidney tubules video thumbnail" loading="lazy">
+                            <span class="watch-badge">Watch video</span>
+                        </div>
+                        <div class="video-info"><h3 class="video-title">Manual Microdissection of Mouse Kidney Tubules</h3></div>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section id="intravital-imaging">
+            <div class="section-label">02 · Kidney Imaging</div>
+            <h2>Intravital Kidney Imaging</h2>
+            <p class="section-intro">Live imaging of kidney structure, injury, mitochondria, and renal tubules.</p>
+            <div class="video-grid">
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1aRqmyGIpnbFsCuRug5aYXaOHxGjHMG0o/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/second_video.png" alt="Real-time acute tubular necrosis by intravital microscopy video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Real-Time Acute Tubular Necrosis by Intravital Microscopy</h3><p class="video-subtitle"><strong>Red:</strong> TMRM (mitochondrial membrane potential); <strong>Green:</strong> autofluorescence; <strong>Blue:</strong> DAPI (nuclei)</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1B-w1vLQgh2zedcZsi1GC9Ay2HL5hK638/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/eigth_video.png" alt="Glomerulus imaging video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Glomerulus</h3><p class="video-subtitle"><strong>Red:</strong> LPS-rhodamine; <strong>Green:</strong> CAG-GFP</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1dgd7SqXWcGO2ajEivAE_AT9p7Ct2CyeV/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/ninth_video.png" alt="Mitochondria in the kidney imaging video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Mitochondria in the Kidney</h3><p class="video-subtitle"><strong>Red:</strong> photoactivated mitochondrial Dendra2; <strong>Green:</strong> mitochondrial Dendra2</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1i6Qbkb-bfm0ieAbanDWYmzIvf0Bd88Xp/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/tenth_video.png" alt="Myeloid cells in the kidney bone marrow chimera video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (6)</h3><p class="video-subtitle">Bone marrow chimera generated by transplantation of mito-Dendra2 bone marrow into wild-type recipients. <strong>Green:</strong> mitochondrial Dendra2; <strong>dark green/yellow:</strong> autofluorescence</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1YeyED4eoVwX8BjGMBp3dKw0B2FDTnj48/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/eleventh_video.png" alt="Renal tubules video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Renal Tubules (1)</h3></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/124YgVEJnq_IgEwesU9JayxaCkksDNVBt/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/thirteenth_video.png" alt="Renal tubules video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Renal Tubules (2)</h3></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1EiqKTgWBSKWHuvsfJ3O0esOeMC9Ujr4c/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/fourteenth_video.png" alt="Intravital fluorescence lifetime imaging of the kidney video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Intravital Fluorescence Lifetime Imaging of the Kidney</h3></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1J2Q5HbcxNKT_mb8sK5_XOzYiUHg42wi8/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/sixteenth_video.png" alt="Renal tubules with Alexa488-P22 video thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Renal Tubules (3)</h3><p class="video-subtitle"><strong>Green:</strong> Alexa488-P22 (60-nm icosahedral virus-like protein cage)</p></div>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section id="myeloid-imaging">
+            <div class="section-label">03 · Immune Cell Imaging</div>
+            <h2>Myeloid Cells in the Kidney</h2>
+            <p class="section-intro">Intravital imaging of myeloid cells and related fluorescent reporters in the kidney.</p>
+            <div class="video-grid">
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/16tO81LLHD_pJLI_C63Jhk1bf0p-r6nn4/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/third_video.png" alt="Myeloid cells in the kidney video 1 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (1)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1VtZv4sI_Si50T9VSIuxw5FYKjkeKo2aU/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/4th_video.png" alt="Myeloid cells in the kidney video 2 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (2)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1ls0ed2T2MJXU3d55Akx0zLkF3zSr-SyV/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/fifth_video.png" alt="Myeloid cells in the kidney video 3 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (3)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1PDjmTF4sDqs5FUFQLNtaZiZ6gjRuQPFo/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/sixth_video.png" alt="Myeloid cells in the kidney video 4 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (4)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1CWiquMvfAtEnWuq6cwmhZ74AJilkv_oI/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/seventh_video.png" alt="Myeloid cells in the kidney video 5 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (5)</h3><p class="video-subtitle"><strong>Green:</strong> CX3CR1-GFP</p></div>
+                    </a>
+                </article>
+                <article class="video-card">
+                    <a href="https://drive.google.com/file/d/1BT8Wwc01RsGv3p40rf7d2PvyS2mhhvd1/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail-wrap"><img src="./images/twelth_video.png" alt="Myeloid cells in the kidney video 7 thumbnail" loading="lazy"><span class="watch-badge">Watch video</span></div>
+                        <div class="video-info"><h3 class="video-title">Myeloid Cells in the Kidney (7)</h3><p class="video-subtitle"><strong>Red:</strong> Poly(I:C)-rhodamine; <strong>Green:</strong> CX3CR1-GFP; <strong>Blue:</strong> DAPI</p></div>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
 </html>
