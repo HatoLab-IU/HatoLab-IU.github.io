@@ -25,7 +25,19 @@ fetch('public_protocols.csv')
 
       const title = document.createElement('h3');
       title.className = 'protocol-title';
-      title.textContent = sentence;
+
+      // Keep protocol titles as text, but style PMID references to match data.html.
+      const parts = sentence.split(/(\(\s*PMID:\s*\d+\s*\))/gi);
+      parts.forEach(part => {
+        if (/^\(\s*PMID:\s*\d+\s*\)$/i.test(part)) {
+          const pmid = document.createElement('span');
+          pmid.className = 'pmid';
+          pmid.textContent = part;
+          title.appendChild(pmid);
+        } else {
+          title.appendChild(document.createTextNode(part));
+        }
+      });
 
       const link = document.createElement('a');
       link.className = 'protocol-action';
